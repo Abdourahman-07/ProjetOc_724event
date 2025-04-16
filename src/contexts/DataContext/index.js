@@ -20,10 +20,12 @@ export const DataProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
 
-  const getLast = () =>
-    data.events.sort(
+  const getLast = () => {
+    if (!data || !data.events) return null;
+    return data.events.sort(
       (evtA, evtB) => new Date(evtB.date) - new Date(evtA.date)
     )[0];
+  };
 
   const getData = useCallback(async () => {
     try {
