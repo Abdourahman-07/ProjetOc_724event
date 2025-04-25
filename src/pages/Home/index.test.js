@@ -28,15 +28,22 @@ describe("When Form is created", () => {
 
 describe("When a page is created", () => {
   it("a list of events is displayed", () => {
-    // to implement
+    render(<Home />);
+    screen.getByTestId("events");
   });
   it("a list a people is displayed", () => {
-    // to implement
+    render(<Home />);
+    screen.getByTestId("people");
   });
   it("a footer is displayed", () => {
-    // to implement
+    render(<Home />);
+    screen.getByTestId("footer");
   });
-  it("an event card, with the last event, is displayed", () => {
-    // to implement
+  it("an event card, with the last event, is displayed", async () => {
+    render(<Home />);
+    const footer = screen.getByTestId("footer");
+    const lastEventCard = footer.querySelector(".EventCard");
+    await screen.findByText("Notre dernière prestation");
+    expect(lastEventCard).toBeTruthy();
   });
 });
